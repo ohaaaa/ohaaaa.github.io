@@ -12,7 +12,7 @@
 
         /*各区域基础设置*/
         .view{
-            width: 400px;
+            width: 300px;
             height: 200px;
             margin: 200px auto;
             /* border: 1px solid red; */
@@ -25,9 +25,11 @@
             height: 100%;
             /* border: 1px solid red; */
             list-style: none;
+            display: flex;
         }
         .view > ul > li{
-            width: 25%;
+            /* width: 12.5%; */
+            flex: 1;
             height: 100%;
             /* border: 1px solid black; */
             float: left;
@@ -43,21 +45,21 @@
             background-size: cover;
         }
 
-        /*形成4立方块*/
+        /*形成4面*/
         .view>ul>li>span:nth-of-type(1){
-            background-image: url("../images/comic16.jpg");
+            background-image: url("../images/small001.png");
             transform: translate3d(0,0,100px);
         }
         .view>ul>li>span:nth-of-type(2){
-            background-image: url("../images/comic18.jpg");
+            background-image: url("../images/small002.png");
             transform: translate3d(0,-50%,0) rotate3d(1,0,0,90deg);
         }
         .view>ul>li>span:nth-of-type(3){
-            background-image: url("../images/comic05.png");
+            background-image: url("../images/small003.png");
             transform: translate3d(0,0,-100px) rotate3d(1,0,0,180deg);
         }
         .view>ul>li>span:nth-of-type(4){
-            background-image: url("../images/comic20.jpg");
+            background-image: url("../images/small004.png");
             transform: translate3d(0,50%,0) rotate3d(1,0,0,270deg);
         }
 
@@ -73,6 +75,21 @@
         }
         .view>ul>li:nth-of-type(4)>span{
             background-position: -300% 0;
+        }
+        .view>ul>li:nth-of-type(5)>span{
+            background-position: -400% 0;
+        }
+        .view>ul>li:nth-of-type(6)>span{
+            background-position: -500% 0;
+        }
+        .view>ul>li:nth-of-type(7)>span{
+            background-position: -600% 0;
+        }
+        .view>ul>li:nth-of-type(8)>span{
+            background-position: -700% 0;
+        }
+        .view>ul>li:nth-of-type(9)>span{
+            background-position: -800% 0;
         }
 
         /* 创建过渡*/
@@ -161,6 +178,36 @@
                 <span></span>
                 <span></span>
             </li>
+            <li>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </li>
+            <li>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </li>
+            <li>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </li>
+            <li>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </li>
+            <li>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </li>
 
         </ul>
         <a href="javascript:;" class="pre">&lt;</a>
@@ -180,14 +227,14 @@
                     $("li").each(function(key,value){
                         $(this).css({
                             "transform":"rotateX("+(currrentdeg+90)+"deg)",
-                            "transition-delay":(key*0.3)+"s"
+                            "transition-delay":(key*0.2)+"s"
                         });
                     });
                     setTimeout(function(){
                         nflag=true;
                         currrentdeg=currrentdeg+90;
                         // console.log(currrentdeg);
-                    },2000);
+                    },3000);
                 }
             });
             //pre
@@ -197,13 +244,13 @@
                     $("li").each(function(key,value){
                         $(this).css({
                             "transform":"rotateX("+(currrentdeg-90)+"deg)",
-                            "transition-delay":(key*0.3)+"s"
+                            "transition-delay":(key*0.2)+"s"
                         });
                     });
                     setTimeout(function(){
                         nflag=true;
                         currrentdeg=currrentdeg-90;
-                    },2000);
+                    },3000);
                 }
             });
         });
