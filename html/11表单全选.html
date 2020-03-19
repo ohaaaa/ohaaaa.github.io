@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 50%;
+            /* border: 1px solid red; */
+            margin: 200px auto;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table>thead{
+            background-color: #09c;
+            color: aliceblue;
+        }
+        thead>tr>th{
+            border: 1px solid #ccc;
+            height: 40px;
+        }
+        tbody>tr{
+            text-align: center;
+            cursor: pointer;
+            height: 30px;
+            line-height: 30px;
+            background-color: #eee;
+            font-size: 14px;
+        }
+        tbody>tr>td{
+            border: 1px solid #aaa;
+
+        }
+        .a{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" name="" id="allchecked"></th>
+                    <th>Product</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>iphone</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>iphone</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>iphone</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>iphone</td>
+                    <td>10000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let trs = document.querySelector('tbody').querySelectorAll('tr');
+        let allchecked = document.querySelector('#allchecked');
+        let checkboxs=document.querySelector('tbody').querySelectorAll('input');
+        allchecked.onclick=function(){
+            for(let i=0;i<checkboxs.length;i++){
+                checkboxs[i].checked=this.checked;
+            }
+        }
+        for(let i=0;i<checkboxs.length;i++){
+            checkboxs[i].onclick=function(){
+                let flag =true;
+                for(let j=0;j<checkboxs.length;j++){
+                    if(!checkboxs[j].checked){
+                        flag=false;
+                        break;
+                    }
+                }
+                allchecked.checked=flag;
+            }
+        }
+        for(let i=0;i<trs.length;i++){
+            trs[i].onmouseover=function(){
+                this.className='a';
+            }
+            trs[i].onmouseout=function () 
+            {
+                this.className='';
+            }
+        }
+
+
+    </script>
+</body>
+</html>

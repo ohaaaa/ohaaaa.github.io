@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,div,section,ul,li,span,p,textarea{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: #ddd;
+        }
+        textarea{
+            resize: none;
+            outline: none;
+            margin: 0;
+            border: none;
+        }
+        img{
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/ohaaaacomment.css">
+    <link rel="stylesheet" href="../css/ohaaaachead.css">
+</head>
+<body>
+    <div id="ohaaaahead">
+        
+    </div>
+    <div id="ohaaaacomments">
+        <section id="comments">
+            <section class="comments-head">
+                <div class="comments-head-left">评论<span>（0）</span></div>
+                <div class="comments-head-center">
+                    <p>切换为时间排序</p> 
+                </div>
+                <div class="comments-head-right">
+                    <img src="../images/close.png" alt="">
+                </div>
+            </section>
+            <ul class="comments-contents">
+            <section class="comments-content">
+                <div class="comments-content-top">
+                    <div class="comments-content-top-left">
+                        <img src="../images/001.png" alt="" class="profile-pictrue">
+                    </div>
+                    <div class="comments-content-top-center">
+                        <p class="comments-username">Meow</p>
+                        <p class="comments-datetime">2000-06-09</p>
+                    </div>
+                    <div class="comments-content-top-right">
+                        <span class="comments-liked-count">1200</span>
+                        <div class="comments-like"><img src="../images/like_small.png" alt=""></div>
+                        <div class="comments-small"><img src="../images/comment_small.png" alt=""></div>
+                        <span class="comments-added-count">1200</span>
+                    </div>
+                </div>
+                <div class="comments-content-center">
+                    <p>能请你跳支舞吗？</p>
+                    <ul class="comments-addcomments">
+                        <div class="comments-addcomment">
+                            <div class="addcomments-username">
+                                可爱的红:
+                            </div>
+                            <div class="addcomments-content">
+                                可以呀
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <div class="comments-content-bottom">
+                    <div class="comments-more"><img src="../images/more.png" alt=""></div>
+                    <div class="comments-report">
+                        <div><img src="../images/report.png" alt=""></div>
+                        <p>举报评论</p>
+                    </div>
+                </div>
+            </section>
+            </ul>
+            <section class="nocomments">
+                <p>暂无评论</p>
+            </section>
+        </section>
+        <section id="edit-area">
+            <section class="edit-input-area">
+                <section class="edit-input-left">
+                    <img src="../images/001.png" alt="" class="profile-pictrue">
+                </section>
+                <section class="edit-input-right">
+                    <pre id="fit1" class="hide"></pre>
+                    <textarea name="" id="fit2" cols="30" rows="2" placeholder="请在这里输入评论内容" onkeyup="autoTextarea()"></textarea>
+                </section>
+            </section>
+            <section class="edit-footer">
+                <section class="edit-submit">
+                    <div class="edit-submit-left"><img src="../images/close.png" alt=""></div>
+                    <div class="edit-submit-center"><img src="../images/photo.png" alt=""></div>
+                    <div class="edit-submit-right"><img src="../images/go.png" alt=""></div>
+                </section>
+            </section>
+        </section>
+    </div>
+    <script src="../js/ohaaaacommment.js"></script>
+</body>
+</html>

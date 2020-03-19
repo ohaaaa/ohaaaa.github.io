@@ -1,0 +1,322 @@
+#ohaaaacomments{
+    width: 600px;
+    margin: 100px auto;
+    /* border: 1px solid #ccc; */
+    box-sizing: border-box;
+}
+/******************评论区开始**************************/
+#comments{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+/******************首部开始**************************/
+.comments-head{
+    width: 100%;
+    /* background-color: #ffa34d; */
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 10px;
+    box-sizing: border-box;
+}
+.comments-head-left{
+    flex: 2;
+    font-weight: bold;
+    text-align: center;
+    font-size: 17px;
+    line-height: 24px;
+}
+.comments-head-center{
+    flex: 8;
+    font-size: 17px;
+    line-height: 24px;
+    visibility: hidden;
+}
+.comments-head-center>p{
+    width: 50%;
+    cursor: pointer;
+    color: #f57b51;
+}
+.comments-head-right{
+    flex: 1;
+    text-align: center;
+}
+.comments-head-right>img{
+    width: 25px;
+}
+/******************首部结束**************************/
+
+/******************他人评论开始**************************/
+.nocomments{
+    width: 100%;
+    /* background-color: #d4f8e8; */
+    margin:10px 0;
+    padding:  0 10px 10px;
+    box-sizing: border-box;
+    display: block;           /* display: none; */
+}
+.nocomments>p{
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    opacity: 0.5;
+}
+.comments-contents{
+    display: none;
+    /* display: block; */
+}
+.comments-content:nth-of-type(1){
+    display: none;
+}
+.comments-content{
+    width: 100%;
+    /* background-color: #d4f8e8; */
+    margin:10px 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.comments-content-top{
+    width: 100%;
+    /* background-color: #1eb2a6; */
+    display: flex;
+}
+.comments-content-top-left{
+    flex: 1;
+    text-align: center;
+}
+.comments-content-top-left>img{
+    width: 60%;   
+}
+.comments-content-top-center{
+    flex: 7;
+}
+.comments-username{
+    color: #f57b51;
+}
+.comments-datetime{
+    font-size: 12px;
+    color: #ccc;
+}
+.comments-content-top-right{
+    flex: 2;
+    display: flex;
+    text-align: center;
+    position: relative;
+    padding-right: 20px;
+}
+.comments-liked-count{
+    /* display: block; */
+    flex: 1;
+    height: 50px;
+    /* background-color: #75daad; */
+    line-height: 50px;
+    text-align: center;
+}
+.comments-like{
+    flex: 1;
+    /* background-color: #f67575; */
+}
+.comments-like>img{
+    width: 25px;
+    padding-top: 10px;
+}
+.comments-small{
+    flex: 1;
+}
+.comments-small>img{
+    width: 25px;
+    padding-top: 10px;
+}
+.comments-added-count{
+    /* display: block; */
+    flex: 1;
+    height: 50px;
+    /* background-color: #75daad; */
+    line-height: 50px;
+    text-align: center;
+}
+/******************他人评论内容开始**************************/
+.comments-content-center{
+    width: 100%;
+    /* background-color: #f67575; */
+    /* display: flex; */
+    /* flex-direction: row-reverse; */
+    padding-left: 11%;
+    padding-right: 3%;
+    box-sizing: border-box;
+}
+.comments-content-center>p{
+    width: 89%;
+    /* background-color: #ffb2a7; */
+    font-size: 17px;
+    line-height: 24px;
+}
+/*追加评论*/
+.comments-addcomments{
+    width: 100%;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 24px;
+}
+.comments-addcomment{
+    width: 100%;
+    /* background-color: #a6b1e1; */
+    padding: 10px ;
+    box-sizing: border-box;
+    display: flex;
+}
+.addcomments-username{
+    flex: 1;
+    /* background-color: #dcd6f7; */
+    color: #f1935c;
+}
+.addcomments-content{
+    flex: 6;
+    font-size: 14px;
+    /* background-color: #75daad; */
+}
+/******************他人评论内容结束**************************/
+
+.comments-content-bottom{
+    width: 100%;
+    /* background-color: #a6b1e1; */
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+}
+.comments-more{
+    width: 10%;
+    transform: rotate3d(0,0,1,90deg);
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+}
+.comments-more>img{
+    width: 25px;
+}
+.comments-report{
+    position: absolute;
+    bottom: -150%;
+    right: 10px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px #888;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    width: 100px;
+    height: 25px;
+    line-height: 25px;
+    display: none;
+    cursor: pointer;
+    z-index: 10;
+}
+.comments-report>div{
+    flex: 2;
+}
+.comments-report>div>img{
+    width: 25px;
+}
+.comments-report>p{
+    flex: 4;
+}
+/******************他人评论结束**************************/
+
+/******************编写评论开始**************************/
+#edit-area{
+    width: 100%;
+    /* background-color: #888; */
+    background-color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.edit-input-area{
+    width: 100%;
+    display: flex;
+}
+.edit-input-left{
+    flex: 1;
+    /* background-color: #ffa34d; */
+    position: relative;
+}
+.edit-input-left>img{
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+.edit-input-right{
+    flex: 8;
+}
+.edit-input-right>textarea{
+    width: 100%;
+    /* height: 100%; */
+    /* background-color: #ffa34d; */
+    font-size: 17px;
+    line-height: 24px;
+    overflow: hidden;
+}
+.edit-footer{
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.edit-submit{
+    width: 10%;
+    /* background-color: #d4f8e8; */
+    display: flex;
+    cursor: pointer;
+}
+.edit-submit-left{
+    flex: 1;
+    background-color: white;
+    text-align: center;
+    /* display: none; */
+}
+.edit-submit-center{
+    flex: 1;
+    background-color: white;
+    text-align: center;
+    display: none;
+}
+.edit-submit-right{
+    flex: 1;
+    background-color: white;
+    text-align: center;
+}
+.edit-submit-left>img{
+    width: 25px;
+}
+.edit-submit-center>img{
+    width: 25px;
+}
+.edit-submit-right>img{
+    width: 25px;
+}
+/******************编写评论结束**************************/
+/******************textarea自适应**************************/
+#fit1{
+    width: 100%;
+    /* margin: 0 0 30px 0; */
+    /* padding: 10px 10px 20px; */
+    /* border: 1px solid #e6e6e6; */
+    min-height: 48px;
+    resize: none;
+    line-height: 24px;
+    /* border-radius: 3px; */
+    font-size: 17px;
+    font-family: inherit;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+.hide{
+    visibility: hidden;
+    position: absolute;
+    z-index: -100;
+}

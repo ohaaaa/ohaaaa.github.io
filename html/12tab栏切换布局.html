@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #tab{
+            width: 700px;
+            margin: 150px auto;
+        }
+        #tab>nav{
+            width: 100%;
+        }
+        #tab>nav>ul{
+            list-style: none;
+            display: flex;
+            background-color: #ddd;
+        }
+        #tab>nav>ul>li{
+            flex:1;
+            text-align: center;
+            /* background-color: #ddd; */
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            cursor: pointer;
+        }
+        #tab>section>article{
+            padding: 20px;
+            text-align: center;
+            font-size: 50px;
+            position: absolute;
+        }
+        .a{
+            background-color: #c81623;
+            color: white;
+        }
+        /* #b{
+            background-color: blue;
+            color: white;
+        } */
+        #tab>section>article{
+            display: none;
+        }
+        #tab>section>article:nth-of-type(1){
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <nav>
+            <ul>
+                <li class="a">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价</li>
+            </ul>
+        </nav>
+        <section>
+            <article>
+                商品介绍页面内容
+            </article>
+            <article>
+                规格包装页面内容
+            </article>
+            <article>
+                售后评价页面内容
+            </article>
+            <article>
+                商品评价页面内容
+            </article>
+        </section>
+    </div>
+    <script>
+        let tab=document.querySelector('#tab');
+        let lis=tab.querySelector('ul').querySelectorAll("li");
+        let ars=tab.querySelector('section').querySelectorAll("article");
+        for(let i=0;i<lis.length;i++){
+            lis[i].setAttribute('index',i);
+            lis[i].onclick=function(){
+                for(let j=0;j<lis.length;j++){
+                    lis[j].setAttribute('class','');
+                    ars[j].style.display='none';
+                }
+                this.setAttribute('class','a');
+                let index = lis[i].getAttribute('index');
+                ars[index].style.display='block';
+            }
+        }
+    </script>
+</body>
+</html>

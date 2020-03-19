@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100%;
+        }
+        #menu{
+            width:330px;
+            margin: 200px auto;
+            display: flex;
+            border-top: 1px solid #ccc;
+        }
+        #menu>section{
+            flex:1;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style-type: none;
+        }
+        #menu>section>a{
+            text-align: center;
+            width: 100%;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+            border-bottom: 1px solid #ccc;
+            color: black;
+        }
+        #menu>section>ul{
+            width: 100%;
+            display: none;
+            color: black;
+        }
+        #menu>section>ul>li>a{
+            display: block;
+            width: 100%;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .a{
+            background-color: #f8dc88;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <nav id="menu">
+            <section>
+                <a href="">微博</a>
+                <ul>
+                    <li><a>私信</a></li>
+                    <li><a>评论</a></li>
+                    <li><a>@我</a></li>
+                </ul>
+            </section>
+            <section>
+                <a href="">微博</a>
+                <ul>
+                    <li><a>私信</a></li>
+                    <li><a>评论</a></li>
+                    <li><a>@我</a></li>
+                </ul>
+            </section>
+            <section>
+                <a href="">微博</a>
+                <ul>
+                    <li><a>私信</a></li>
+                    <li><a>评论</a></li>
+                    <li><a>@我</a></li>
+                </ul>
+            </section>
+            <section>
+                <a href="">微博</a>
+                <ul>
+                    <li><a>私信</a></li>
+                    <li><a>评论</a></li>
+                    <li><a>@我</a></li>
+                </ul>
+            </section>
+        </nav>
+    </div>
+    <script>
+        let menu = document.querySelector('#menu');
+        let secs = menu.children;
+        let ul;
+        let lis;
+        // console.dir(secs);
+        for(let i=0;i<secs.length;i++){
+            ul = secs[i].children[secs[i].children.length-1];
+            lis = ul.querySelectorAll('li');
+            console.dir(lis);
+            secs[i].onmouseover = function(){
+                secs[i].firstElementChild.style.background='#c81623';
+                secs[i].firstElementChild.style.color='white';
+                secs[i].children[1].style.display='block';
+            }
+            secs[i].onmouseout = function(){
+                secs[i].firstElementChild.style.background='';
+                secs[i].firstElementChild.style.color='black';
+                secs[i].children[1].style.display='none';
+            }
+            for(let j=0;j<lis.length;j++){
+                lis[j].onmouseover=function(){
+                    this.className='a';
+                    // this.style.background='#f76a8c';
+                }
+                lis[j].onmouseout=function(){
+                    this.className='';
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>

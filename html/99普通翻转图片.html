@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div,ul,li,a,span{
+            padding: 0;
+            margin: 0;
+        }
+
+        /*各区域基础设置*/
+        .view{
+            width: 400px;
+            height: 200px;
+            margin: 200px auto;
+            /* border: 1px solid red; */
+            /* transform: rotate3d(1,1,0,-30deg); */
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .view > ul{
+            width: 100%;
+            height: 100%;
+            /* border: 1px solid red; */
+            list-style: none;
+        }
+        .view > ul > li{
+            width: 25%;
+            height: 100%;
+            /* border: 1px solid black; */
+            float: left;
+            position: relative;
+        }
+        .view > ul > li > span{
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+            position: absolute;
+            transform-origin: center center;
+            background-size: cover;
+        }
+
+        /*形成4立方块*/
+        .view>ul>li>span:nth-of-type(1){
+            background-image: url("../images/comic16.jpg");
+            transform: translate3d(0,0,100px);
+        }
+        .view>ul>li>span:nth-of-type(2){
+            background-image: url("../images/comic18.jpg");
+            transform: translate3d(0,-50%,0) rotate3d(1,0,0,90deg);
+        }
+        .view>ul>li>span:nth-of-type(3){
+            background-image: url("../images/comic05.png");
+            transform: translate3d(0,0,-100px) rotate3d(1,0,0,180deg);
+        }
+        .view>ul>li>span:nth-of-type(4){
+            background-image: url("../images/comic20.jpg");
+            transform: translate3d(0,50%,0) rotate3d(1,0,0,270deg);
+        }
+
+        /*移动背景形成完整图像*/
+        .view>ul>li:nth-of-type(1)>span{
+            background-position: 0 0;
+        }
+        .view>ul>li:nth-of-type(2)>span{
+            background-position: -100% 0;
+        }
+        .view>ul>li:nth-of-type(3)>span{
+            background-position: -200% 0;
+        }
+        .view>ul>li:nth-of-type(4)>span{
+            background-position: -300% 0;
+        }
+
+        /* 创建过渡*/
+        .view>ul>li{
+            transform: rotateX(0deg);
+            transition: transform 1s;
+            transform-style: preserve-3d;
+        }
+        /* .view:hover>ul>li{
+            cursor: pointer;
+            transform: rotate3d(1,0,0,90deg);
+        } */
+
+        /*创建动画*/
+        /* .view>ul>li:nth-of-type(1){
+            animation: movexxx 4s linear forwards;
+        }
+        .view>ul>li:nth-of-type(2){
+            animation: movexxx 4s linear 2s forwards;
+        }
+        .view>ul>li:nth-of-type(3){
+            animation: movexxx 4s linear 4s forwards;
+        }
+        .view>ul>li:nth-of-type(4){
+            animation: movexxx 4s linear  6s forwards;
+        }
+        @keyframes movexxx {
+            0%{
+                transform: rotate3d(1,0,0,0deg);
+            }
+            100%{
+                transform: rotate3d(1,0,0,360deg);
+            }
+        } */
+
+        /*按钮样式*/
+        .pre, .next{
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            text-decoration: none;
+            position: absolute;
+            top: 50%;
+            transform: translate3d(-50%,-50%,100px);
+            font-size: 40px;
+            text-shadow: 0 0 5px white;
+        }
+        .pre{
+            left: -60px;
+        }
+        .next{
+            right: -120px;
+        }
+        .pre:hover,.next:hover{
+            background-color: #ccc;
+            opacity: 0.5;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="view">
+        <ul>
+            <li>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </li>
+            <li>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </li>
+            <li>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </li>
+            <li>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </li>
+
+        </ul>
+        <a href="javascript:;" class="pre">&lt;</a>
+        <a href="javascript:;" class="next">&gt;</a>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script>
+        $(function(){
+            //定义此刻角度
+            let currrentdeg=0;
+            //添加节流阀,防止多次单击冲突
+            let nflag = true;
+            //next
+            $(".next").on("click",function(){
+                if(nflag){
+                    nflag=false;
+                    $("li").each(function(key,value){
+                        $(this).css({
+                            "transform":"rotateX("+(currrentdeg+90)+"deg)",
+                            "transition-delay":(key*0.3)+"s"
+                        });
+                    });
+                    setTimeout(function(){
+                        nflag=true;
+                        currrentdeg=currrentdeg+90;
+                        // console.log(currrentdeg);
+                    },2000);
+                }
+            });
+            //pre
+            $(".pre").on("click",function(){
+                if(nflag){
+                    nflag=false;
+                    $("li").each(function(key,value){
+                        $(this).css({
+                            "transform":"rotateX("+(currrentdeg-90)+"deg)",
+                            "transition-delay":(key*0.3)+"s"
+                        });
+                    });
+                    setTimeout(function(){
+                        nflag=true;
+                        currrentdeg=currrentdeg-90;
+                    },2000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

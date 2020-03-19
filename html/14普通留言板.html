@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #box{
+            width: 500px;
+            margin: 200px auto;
+            background-color: #f8fab8;
+        }
+        #box>section{
+            border: 1px solid #ccc;
+            padding: 20px 20px 20px 20px ;
+        }
+        #box>section:nth-of-type(1){
+            display: flex;
+        }
+        #box>section:nth-of-type(1)>div:nth-of-type(1){
+            flex: 6;
+            height: 100%;
+        }
+        #box>section:nth-of-type(1)>div:nth-of-type(2){
+            flex: 1;
+            position: relative;
+        }
+        #box>section>div>textarea {
+            width: 100%;
+            /* height: 100px; */
+            /* border-radius: 0 80px 0 80px; */
+            border: 1px solid pink;
+            outline: none;
+            resize: none;
+            box-sizing: border-box;
+            padding: 20px;
+            /* background-color: #ccf0e1; */
+            line-height: 20px;
+            overflow-y: hidden;
+            /* resize: none; */
+        }
+        #box>section>div>button{
+            /* margin: 0 20px; */
+            width: 40px;
+            height: 20px;
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 3px; /* 边框半径 */
+            background: #1E90FF; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        #box>section>div>button:hover{
+            background: #5599FF;
+        }
+        #box>section>span{
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        #box>section>ul>section{
+            width: 100%;
+            display: flex;
+        }
+        #box>section>ul>section>li {
+            /* width: 100%; */
+            flex: 6;
+            box-sizing: border-box;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #f8dc88;
+            color: #f76a8c;
+            font-size: 14px;
+            /* border: 10px solid #1eb2a6; */
+            border-radius: 20px;
+        }
+        #box>section>ul>section>div{
+            flex: 1;
+            position: relative;
+        }
+        #box>section>ul>section>div>button{
+            width: 40px;
+            height: 20px;
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 3px; /* 边框半径 */
+            background: #1E90FF; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        #box>section>ul>section>div>button:hover{
+            background: #5599FF;
+        }
+        #fit1{
+            width: 100%;
+            margin: 0 0 30px 0;
+            padding: 10px 10px 20px;
+            border: 1px solid #e6e6e6;
+            min-height: 88px;
+            resize: none;
+            line-height: 24px;
+            border-radius: 3px;
+            font-size: 14px;
+            font-family: '微软雅黑', Helvetica, sans-serif;
+            overflow: hidden;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        .hide{
+            visibility: hidden;
+            position: absolute;
+            z-index: -100;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <section>
+            <div>
+                <pre id="fit1" class="hide"></pre>
+                <textarea name="" id="fit2"  onkeyup="autoTextarea()"></textarea>
+            </div>
+            <div><button>发布</button></div>
+        </section>
+        <section>
+            <span>留言内容</span>
+            <ul>
+                <section>
+                    <li>你好呀！</li>
+                    <div><button>置顶</button></div>
+                </section>
+            </ul>
+        </section>
+    </div>
+    <script>
+        function autoTextarea(){
+            var textarea = document.getElementById('fit2')
+            var pre = document.getElementById('fit1');
+            pre.innerHTML = textarea.value;
+            var realHeight = pre.offsetHeight;//offsetHeight = height + padding + border
+            if(realHeight > 120) textarea.style.height = (realHeight + 24 -32) + 'px'; //加24为一行的高度，减32为padding和border
+            else textarea.style.height = realHeight - 32 + 'px';
+        }
+        let btn = document.querySelector('button');
+        let text = document.querySelector('textarea');
+        let ul = document.querySelector('ul');
+        text.onfocus = function(){
+            if(text.value.trim()==='请在这里输入留言内容'){
+                text.value='';
+            }
+            text.style.opacity='1';
+        }
+        text.onblur = function(){
+            if(text.value.trim===''){
+                text.value='请在这里输入留言内容';
+            }
+            text.style.opacity='0.5';
+        }
+        btn.onclick = function() {
+            if (text.value.trim() === ''||text.value.trim()==='请在这里输入留言内容') {
+                alert('您没有输入内容');
+                return false;
+            } else {
+                // console.log(text.value);
+                // (1) 创建元素
+                let sec = document.createElement('section');
+                let div = document.createElement('div');
+                var li = document.createElement('li');
+                let btn = document.createElement('button');
+                // 先有li 才能赋值
+                li.innerHTML = text.value;
+                btn.innerHTML = '删除';
+                // (2) 添加元素
+                // ul.appendChild(li);li
+                ul.insertBefore(sec, ul.children[ul.children.length]);
+                sec.insertBefore(li, sec.children[sec.children.length]);
+                sec.insertBefore(div, sec.children[sec.children.length]);
+                div.insertBefore(btn, div.children[div.children.length]);
+                text.value = '';
+                btn.onclick=function(){
+                    ul.removeChild(this.parentNode.parentNode);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

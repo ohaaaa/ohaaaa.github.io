@@ -1,0 +1,331 @@
+#lodingbox{
+    width: 100%;
+    /* background-color: #ffde7d; */
+}
+#lodings{
+    width: 100%;
+    /* background-color: #f1fcfc; */
+}
+#stripeloding{
+    width: 80px;
+    margin: 200px auto;
+    /* background-color: #f688bb; */
+    display: flex;
+    overflow: hidden;
+}
+#mainbox{
+    display: none;
+    /* opacity: 0; */
+    /* display: block; */
+}
+#searchbox{
+    width: 500px;
+    margin: 200px auto;
+    /* background-color: #f1fcfc; */
+}
+#search{
+    background-color: #beebe9;
+    display: flex;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    /* border-bottom: 2px solid #79bac1; */
+    position: relative;
+}
+.currentpage{
+    display: block;
+}
+#pages{
+    background-color: #beebe9;
+    border-radius: 0 0 10px 10px;
+}
+#links{
+    background-color: #beebe9;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0 0 10px 10px;
+}
+/*******************加载条开始**************************/
+.stripe{
+    flex: 1;
+    height: 80px;
+    /* display: block; */
+    transform: translateY(100%);
+    /* animation: stripeloding 3s ease 0s infinite ; */
+}
+@keyframes stripeloding{
+    0%{
+        transform: translateY(100%);
+    }
+    50%{
+        transform: translateY(0%);
+    }
+    100%{
+        transform: translateY(100%);
+    }
+}
+@keyframes fadeout{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes fadein{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+/* @keyframes fade{
+    0%{
+
+    }
+} */
+
+/* .stripe:nth-of-type(5n+1){
+    background-color: #ff2e63;
+}
+.stripe:nth-of-type(5n+2){
+    background-color: #f08a5d;
+}
+.stripe:nth-of-type(5n+3){
+    background-color: #f9ed69;
+}
+.stripe:nth-of-type(5n+4){
+    background-color: #30e3ca;
+}
+.stripe:nth-of-type(5n+5){
+    background-color: #112d4e;
+} */
+/*******************加载条结束**************************/
+/*******************搜索开始**************************/
+.search-input{
+    min-width: 0;
+    flex: 4;
+    border-style: none;
+    border-radius: 5px;
+    outline: none;
+    padding: 0 10px;
+    background-color: #f1fcfc;
+    color: #30475e;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 25px;
+    margin-right: 10px;
+}
+.search-right{
+    flex:3;
+    display: flex;
+}
+.search-add{
+    flex: 1;
+    text-align: center;
+    /* background-color: #8ac6d1; */
+    border-radius: 5px;
+    line-height: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+/* .search-add>span{
+    width: 25px;
+    font-size: 14px;
+} */
+.search-add>img{
+    width: 25px;
+}
+.search-go{
+    flex: 1;
+    text-align: center;
+    line-height: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    /* background-color: #8ac6d1; */
+    /* margin-left: 8px; */
+}
+.search-go>img{
+    width: 25px;
+}
+.search-cancel{
+    flex: 1;
+    text-align: center;
+    line-height: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    /* background-color: #8ac6d1; */
+    /* margin-left: 8px; */
+}
+.search-cancel>img{
+    width: 25px;
+}
+/*******************搜索结束**************************/
+/*******************榜单开始**************************/
+.link-top{
+    background-color: #30475e;
+    text-align: center;
+    display: flex;
+    font-size: 15px;
+    line-height: 30px;
+}
+.link-top>p{
+    flex: 2;
+    text-align: center;
+    /* border-radius: 10px; */
+    color: #ededed;
+    font-weight: bold;
+    cursor: pointer;
+    border-right: 1px solid #79bac1;
+}
+.link-top-content{
+    flex: 6;
+    text-align: center;
+    /* background-color: #50d890; */
+    border-radius: 10px;
+    cursor: pointer;
+}
+.link-top-content>a{
+    display: block;
+    width: 100%;
+    /* color: #4f98ca; */
+    color: #ededed;
+    font-weight: bold;
+}
+.link-other{
+    display: none;
+}
+/*******************榜单结束**************************/
+/*******************链接开始**************************/
+.link{
+    text-align: center;
+    /* margin: 10px; */
+    border-radius: 5px;
+    display: flex;
+    padding-bottom: 10px;
+    font-size: 15px;
+    line-height: 30px;
+}
+.link:nth-of-type(1){
+    display: none
+    /* display: flex; */
+}
+.link-index{
+    /* flex: 2; */
+    border-radius: 1000px;
+    width: 30px;
+    /* background-color: #4f98ca; */
+    background-color: #8ac6d1;
+}
+.link-content{
+    flex: 8;
+    text-align: center;
+    background-color: #50d890;
+    /* background-color: #1eb2a6; */
+    border-radius: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.link-content>a{
+    display: block;
+    width: 100%;
+    color: #4f98ca;
+    color: #ededed;
+    font-weight: bold;
+}
+.link-right{
+    flex: 3;
+    display: flex;
+}
+.link-totop{
+    flex: 1;
+    text-align: center;
+    /* background-color: #8ac6d1; */
+    border-radius: 5px;
+    line-height: 30px;
+    height: 30px;
+    cursor: pointer;
+    /* margin-left: 8px; */
+}
+.link-totop>img{
+    width: 25px;
+}
+.link-alter{
+    flex: 1;
+    text-align: center;
+    /* background-color: #8ac6d1; */
+    border-radius: 5px;
+    line-height: 30px;
+    height: 30px;
+    cursor: pointer;
+    /* margin-left: 8px; */
+}
+.link-alter>img{
+    width: 25px;
+}
+.link-delete{
+    flex: 1;
+    text-align: center;
+    /* background-color: #8ac6d1; */
+    border-radius: 5px;
+    line-height: 30px;
+    height: 30px;
+    cursor: pointer;
+    /* margin-left: 8px; */
+}
+.link-delete>img{
+    width: 25px;
+}
+/*******************链接结束**************************/
+/*******************分页开始**************************/
+#pageturn{
+    /* display: flex; */
+    display: none;
+    /* background-color: #8ac6d1; */
+    padding-bottom: 10px;
+}
+.page-turn-right{
+    flex: 4;
+    text-align: left;
+    /* background-color: #8ac6d1; */
+    border-radius: 5px;
+    line-height: 30px;
+    height: 30px;
+    cursor: pointer;
+    /* margin-left: 8px; */
+}
+.page-turn-right>img{
+    width: 25px;
+}
+.page-turn-left{
+    flex: 4;
+    text-align: right;
+    /* background-color: #8ac6d1; */
+    border-radius: 5px;
+    line-height: 30px;
+    height: 30px;
+    cursor: pointer;
+    /* margin-left: 8px; */
+}
+.page-turn-left>img{
+    width: 25px;
+}
+.page-turn-to{
+    flex: 1;
+    text-align: center;
+    /* background-color: #8ac6d1; */
+    border-radius: 5px;
+    line-height: 30px;
+    height: 30px;
+    cursor: pointer;
+    /* margin-left: 8px; */
+}
+.page-turn-to>span{
+    width: 25px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/*******************分页结束**************************/
