@@ -126,8 +126,8 @@ searchadd.onclick = function(){
         lilinkdelete.onclick=function(){
             if(!isalter){
                 if(confirm('您真的要删除这条书签吗?')){
-                    // links.removeChild(lilink);
-                   lilink.remove();
+                    links.removeChild(lilink);
+                //    lilink.remove();
                 }
                 // recoversearch();
             }else{
@@ -203,12 +203,13 @@ function enAlterLink(){
     let linkscount = getLinksCount();
     for(let i=0;i<linkscount;i++){
         let lilink = links.children[i];
+        let lilinkindex = lilink.children[0];
         let lilinkcontent = lilink.children[1];
         let lilinkright = lilink.children[2];
         let lilinkalter = lilinkright.children[1];
         lilinkalter.onclick=function(){
             isalter=true;
-            alterindex = links.lastElementChild.children[0].children[0].innerHTML;
+            alterindex = lilinkindex.children[0].innerHTML;
             searchname.value=lilinkcontent.children[0].innerHTML;
             searchlink.value=lilinkcontent.children[0].href;
         }
