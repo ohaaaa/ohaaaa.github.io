@@ -28,9 +28,17 @@ function lodingDown1(){
     },4000);
 }
 
+//loding完成点击
+function lodingDown2(){
+    lodings.onclick=function(){
+        lodingbox.style.display='none';
+        mainbox.style.display='block';
+    }
+}
+
 window.onload=function(){
     stripeLodingStart();
-    lodingDown();
+    lodingDown2();
 
 }
 

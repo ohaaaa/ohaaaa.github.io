@@ -4,6 +4,7 @@
 }
 #lodings{
     width: 100%;
+    cursor: pointer;
     /* background-color: #f1fcfc; */
 }
 #stripeloding{
