@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="ohaaaa" />
+    <meta name="time" content="2020-03-19" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" type=" " href=" " />
+    <link rel="shortcut icon" type="image/x-icon" href=" " />
+    <link rel="stylesheet" type="text/css" href=" " />
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        input{
+            border-style: none;
+        }
+        #respondbox{
+            width: 500px;
+            margin: 100px auto;
+            background-color: #e3fdfd;
+        }
+        #respond-head{
+            text-align: center;
+            background-color: #ccc;
+            padding: 10px;
+        }
+        .addshow{
+            max-width: 100px;
+            background-color: #ffc7c7;
+            margin: auto;
+            cursor: pointer;
+        }
+        #addarea{
+            width: 100%;
+            padding: 10px;
+            display: none;
+            box-sizing: border-box;
+
+        }
+        #addarea fieldset{
+            padding: 20px;
+            border: none;
+            border: 2px solid #777;
+            border-radius: 4px;
+        }
+        .add-input{
+            width: 100%;
+            height:40px;
+            line-height: 40px;
+            margin: 10px 0;
+            border: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding-left: 5px;
+            box-sizing: border-box;
+        }
+        .add-right{
+            /* background-color: #e3fdfd; */
+            text-align: center;
+        }
+        #showarea{
+            width: 100%;
+            background-color: #e3fdfd;
+            height: 200px;
+        }
+        #showmain{
+            width: 100%;
+            background-color: #11999e;
+        }
+        .showhead{
+            display: flex;
+        }
+        .showhead>p{
+            font-size: 20px;
+            height: 40px;
+            line-height: 40px;
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+        }
+        .showhead>p:nth-of-type(1){
+            flex: 0.5;
+        }
+        .showbody{
+            width: 100%;
+            background-color: #30e3ca;
+        }
+        .showrow{
+            display: flex;
+        }
+        .showrow:nth-of-type(1){
+            display: none;
+        }
+        .showrow>p{
+            flex: 1;
+            text-align: center;
+            font-size: 15px;
+            height: 25px;
+            line-height: 25px;
+        }
+        .showrow>p:nth-of-type(1){
+            flex: 0.5;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="respondbox">
+        <div id="respond-head">
+            <p class="addshow">添加用户信息</p>
+        </div>
+        <div id="addarea">
+            <form action="#">
+                <fieldset>
+                <legend>用户信息</legend>
+                <label for="userName">姓名：</label>
+                <input type="text" id="username" class="add-input" name="userName" placeholder="请输入用户名" required/>
+                <label for="registerdate">日期：</label>
+                <input type="text" id="registerdate" placeholder="请输入注册日期" class="add-input">
+                <label for="usersign">签名：</label>
+                <input type="text" id="usersign" placeholder="请输入个性签名" class="add-input">
+                <input type="submit" value="提交" class="add-input" onclick="pageadduser()"/>
+                </fieldset>
+            </form>
+            <div class="add-right">
+            </div>
+        </div>
+        <div id="showarea">
+            <div id="showmain">
+                <div class="showhead">
+                    <p>序号</p>
+                    <p>用户名</p>
+                    <p>注册日期</p>
+                    <p>个人签名</p>
+                </div>
+                <div class="showbody">
+                    <div class="showrow">
+                        <p>1</p>
+                        <p>ohaaaa</p>
+                        <p>2000-06-09</p>
+                        <p>能请你跳支舞吗？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src=" "></script>
+<script>
+    let people =[{
+        index : '0',
+        username : 'ohaaaa',
+        commentdate:'2000-06-09',
+        content:'能请你跳支舞吗？'
+    },{
+        index : '1',
+        username : 'Meow',
+        commentdate:'2000-03-15',
+        content:'你好呀！'
+    },{
+        index : '2',
+        username : 'mouuu',
+        commentdate:'2019-11-04',
+        content:'Hello'
+    },{
+        index : '3',
+        username : '一想到你呀',
+        commentdate:'2020-03-18',
+        content:'不可以！'
+    },{
+        index : '4',
+        username : '记得开心呀',
+        commentdate:'2019-11-04',
+        content:'努力！奋斗！'
+    }];
+
+    let showbody = document.querySelector('.showbody');
+
+    function initdata(){
+        for(let i=0;i<people.length;i++){
+            let j=0;
+            //1.创建子节点
+            let showrow = showbody.children[0].cloneNode(true);
+            //2.修改内容
+            for(let k in people[i]){
+                showrow.children[j++].innerHTML=people[i][k];
+            }
+            showrow.children[0].innerHTML=showrow.children[0].innerHTML*1+1;
+            //3.添加子节点
+            showbody.append(showrow);
+        }
+        for(let k in people){
+
+        }
+    }
+    initdata();
+
+    let addshow = document.querySelector('.addshow');
+    let addarea = document.querySelector('#addarea');
+
+    function initadd(){
+        document.querySelector('#username').value='';
+        document.querySelector('#registerdate').value='';
+        document.querySelector('#usersign').value='';
+    }
+
+    let addshowflag = true;
+    function isaddshow(){
+        if(addshowflag){
+            addarea.style.display = 'flex';
+            addshowflag=false;
+        }else{ 
+            addshowflag=true;
+            addarea.style.display = 'none';
+        }
+        initadd();
+    }
+    addshow.onclick = isaddshow;
+
+    // function dataadduser(showrow){
+    //     // people.push({showrow})
+    // }
+
+    function pageadduser(){
+        //1.创建子节点
+        let showrow = showbody.children[0].cloneNode(true);
+        //2.修改内容
+        showrow.children[0].innerHTML=showbody.lastElementChild.children[0].innerHTML*1+1;
+        showrow.children[1].innerHTML=document.querySelector('#username').value;
+        showrow.children[2].innerHTML=document.querySelector('#registerdate').value;
+        showrow.children[3].innerHTML=document.querySelector('#usersign').value;
+        //3.添加子节点
+        showbody.append(showrow);
+        isaddshow();
+    }
+
+
+
+</script>
+</body>
+</html>
