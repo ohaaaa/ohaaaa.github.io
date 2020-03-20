@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="ohaaaa" />
+    <meta name="time" content="2020-03-21" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" type=" " href=" " />
+    <link rel="shortcut icon" type="image/x-icon" href=" " />
+    <link rel="stylesheet" type="text/css" href=" " />
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 300px;
+            margin: 300px auto;
+            display: flex;
+        }
+        h1{
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        p{
+            /* width: 25px; */
+            height: 25px;
+            line-height: 25px;
+        }
+        img{
+            width: 25px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>大写的广告</h1>
+        <p>5</p>
+        <img src="../images/close.png" alt="">
+    </div>
+<script src=" "></script>
+<script>
+    let div = document.querySelector('div');
+    let adtimer1 = setTimeout(function(){
+        console.log(img.src);
+        div.style.display='none';
+    },5000 );
+    let p = document.querySelector('p');
+    let adtimer2 = setInterval(function(){
+        p.innerHTML = p.innerHTML-1;
+        console.log(p.innerHTML);
+        if(p.innerHTML<=0){
+            window.clearInterval(adtimer2);
+        }
+    },1000);
+    
+    let img = document.querySelector('img');
+    img.addEventListener('click',function(){
+        div.style.display='none';
+        window.clearTimeout(adtimer1);
+        window.clearInterval(adtimer2);
+    }
+    );
+</script>
+</body>
+</html>

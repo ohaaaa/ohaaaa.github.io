@@ -143,9 +143,9 @@ searchadd.onclick = function(){
         links.appendChild(lilink);
         
         //显示分页
-        if(linkscount>4){
-            document.querySelector("#pageturn").style.display='flex';
-        }
+        // if(linkscount>4){
+        //     document.querySelector("#pageturn").style.display='flex';
+        // }
 
 
     }else{

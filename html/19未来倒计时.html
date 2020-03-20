@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="ohaaaa" />
+    <meta name="time" content="2020-03-21" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" type=" " href=" " />
+    <link rel="shortcut icon" type="image/x-icon" href=" " />
+    <link rel="stylesheet" type="text/css" href=" " />
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: #eee;
+        }
+        #countdown{
+            width: 540px;
+            /* height: 600px; */
+            margin: 20px auto;
+            /* background-color: #e23e57; */
+            background-color: #aaa;
+            box-shadow: 0 0 5px #888;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .showdate{
+            color: #323232;
+            font-size: 40px;
+            width: 500px;
+            margin: auto;
+            background-color: #eee;
+            cursor: pointer;
+        }
+        .inputdate{
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            box-sizing: border-box;
+        }
+        .inputdate>label{
+            width: 300px;
+            margin: auto;
+            color: #fff;
+            /* font-size: 40px; */
+            font-weight: bold;
+            display: block;
+            padding-top: 10px;
+            cursor: pointer;
+        }
+        .inputdate>input{
+            font-size: 17px;
+            height: 25px;
+            padding: 0 10px;
+            margin-top: 10px;
+            display: none;
+        }
+        .countdown-top,.countdown-bottom{
+            width: 500px;
+            margin: auto;
+            display: flex;
+            height: 50px;
+            overflow-y: hidden;
+            background-color: #323232;
+            box-shadow: 0px 0px 7px 5px #fff;
+        }
+        .countdown-top{
+            border-bottom: 2px solid #eee;
+        }
+        .countdown-top p,.countdown-bottom p{
+            /* flex: 1; */
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            vertical-align: middle;
+            font-size: 50px;
+
+            background-color: #323232;
+            color: #fff;
+            border-right: 5px solid #ccc;
+        }
+        #countdown p:last-of-type{
+            border-right: none;
+        }
+        .countdown-bottom>p{
+            transform: translateY(-52px);
+        }
+        .countdown-li{
+            width: 500px;
+            display: flex;
+            margin: auto;
+            position: relative;
+            top: -20px;
+            font-size: 14px;
+            z-index: 10;
+        }
+        .countdown-li span{
+            text-align: center;
+            display: block;
+            flex: 1;
+            color: #fff;
+            /* width: 100px; */
+        }
+        #countdown ul{
+            /* width: 500px; */
+            padding: 40px;
+            background-color: #eee;
+            min-height: 200px;
+            /* text-align: center; */
+            /* list-style: none; */
+        }
+        #countdown ul>li{
+            margin: 0 0 10px 10px;
+            padding: 0 10px 0;
+            height: 35px;
+            font-size: 15px;
+            line-height: 35px;
+            vertical-align: middle;
+            background-color: #ccc;
+        }
+        #countdown ul>li>span{
+            float: right;
+        }
+        .countdown-footer{
+            background-color: #ccc;
+            width: 540px;
+            height: 100px;
+            position: absolute;
+            bottom: -120px;
+            left: 0;
+            text-align: center;
+
+        }
+        .countdown-footer>h1{
+            height: 100px;
+            vertical-align: middle;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown">
+        <div class="inputdate">
+            <p class="showdate"></p>
+            <input type="date" id="futuredate" value="2000-03-15">
+            <label for="futuredate">还有多少期许</label>
+            
+        </div>
+        <div class="countdown-top">
+            <p class="year">0</p>
+            <p class="day">0</p>
+            <p class="hour">24</p>
+            <p class="minute">60</p>
+            <p class="second">60</p>
+        </div>
+        <div class="countdown-bottom">
+            <p class="year">0</p>
+            <p class="day">0</p>
+            <p class="hour">24</p>
+            <p class="minute">60</p>
+            <p class="second">60</p>
+        </div>
+        <div class="countdown-li">
+            <span>年</span>
+            <span>天</span>
+            <span>时</span>
+            <span>分</span>
+            <span>秒</span>
+        </div>
+        <div class="countdown-content-area">
+            <ul class="countdown-contents">
+                <li class="countdown-content">
+                    能请你跳支舞吗？
+                </li>
+                <li class="countdown-content">
+                    峰不二子不是好女人，是绝世好女人呀。<span >--鲁邦三世</span>
+                </li>
+            </ul>
+        </div>
+        <div class="countdown-footer">
+            <h1>by红红便签</h1>
+        </div>
+    </div>
+<script src=" "></script>
+<script>
+    let label = document.querySelector('label');
+    let futuredate = document.querySelector('#futuredate');
+    let flag = true;
+    let showdate = document.querySelector('.showdate');
+    showdate.innerHTML = futuredate.value;
+    showdate.addEventListener('click',function(){
+        if(flag){
+            futuredate.style.display = 'inline';
+            futuredate.focus();
+            flag = false;
+        }
+    })
+    label.addEventListener('click',function(){
+        if(flag){
+            futuredate.style.display = 'inline';
+            flag = false;
+        }
+    })
+    futuredate.onblur=function(){
+        futuredate.style.display = 'none';
+        showdate.innerHTML = futuredate.value;
+        flag = true;
+    }
+    // 1. 获取元素 
+    var years = document.querySelectorAll('.year');
+    var days = document.querySelectorAll('.day');
+    var hours = document.querySelectorAll('.hour'); // 小时的黑色盒子
+    var minutes = document.querySelectorAll('.minute'); // 分钟的黑色盒子
+    var seconds = document.querySelectorAll('.second'); // 秒数的黑色盒子
+    // var inputTime = +new Date(futuredate.value+' 00:00:00'); // 返回的是用户输入时间总的毫秒数
+    
+    countDown(); // 我们先调用一次这个函数，防止第一次刷新页面有空白 
+    // 2. 开启定时器
+    setInterval(countDown, 1000);
+    function countDown() {
+        if(futuredate.value!==''){
+            var inputTime = +new Date(futuredate.value+' 00:00:00'); // 返回的是用户输入时间总的毫秒数
+            var nowTime = +new Date(); // 返回的是当前时间总的毫秒数
+            // times是剩余时间总的秒数
+            var times = Math.abs((inputTime - nowTime)) / 1000;
+            if((inputTime - nowTime)<0){
+                label.innerHTML='那天已经过去';
+            }else{
+                label.innerHTML='距离那天还有';
+            }
+            for(let i=0;i<hours.length;i++){
+                let a= times/3600;
+                let b=a/24;
+                let c=b/365;
+                var h = parseInt(a  % 24); //时
+                var year = parseInt(Math.floor(c) );
+                year = year < 10 ? '0' + year : year;
+                years[i].innerHTML = year;
+                var day = parseInt(Math.floor(b) - year*365 );
+                day = day < 10 ? '0' + day : day;
+                days[i].innerHTML = day;
+                h = h < 10 ? '0' + h : h;
+                hours[i].innerHTML = h; // 把剩余的小时给 小时黑色盒子
+                var m = parseInt(times / 60 % 60); // 分
+                m = m < 10 ? '0' + m : m;
+                minutes[i].innerHTML = m;
+                var s = parseInt(times % 60); // 当前的秒
+                s = s < 10 ? '0' + s : s;
+                seconds[i].innerHTML = s;
+            }
+        }
+    }
+</script>
+</body>
+</html>
