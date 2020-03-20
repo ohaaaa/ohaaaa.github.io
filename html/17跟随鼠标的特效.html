@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="ohaaaa" />
+    <meta name="time" content="2020-03-20" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" type=" " href=" " />
+    <link rel="shortcut icon" type="image/x-icon" href=" " />
+    <link rel="stylesheet" type="text/css" href=" " />
+    <style>
+        body{
+            height: 1000px;
+        }
+        img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="../images/angel.gif" alt="">
+    </div>
+<script src=" "></script>
+<script>
+    let img = document.querySelector('img');
+    document.addEventListener('mousemove',function(e){
+        // console.log(e);
+        // img.style.top=e.clientY-50 + 'px';
+        // img.style.left=e.clientX-50 + 'px';
+        // img.style.top=e.screenY-50 + 'px';
+        // img.style.left=e.screenX-50 + 'px';
+        img.style.top=e.pageY-50 + 'px';
+        img.style.left=e.pageX-50 + 'px';
+    })
+</script>
+</body>
+</html>

@@ -5,47 +5,19 @@
 #lodings{
     width: 100%;
     cursor: pointer;
+    margin: 200px auto;
     /* background-color: #f1fcfc; */
 }
+
 #stripeloding{
     width: 80px;
-    margin: 200px auto;
     /* background-color: #f688bb; */
+    margin: auto;
     display: flex;
+    /* display: none; */
     overflow: hidden;
 }
-#mainbox{
-    display: none;
-    /* opacity: 0; */
-    /* display: block; */
-}
-#searchbox{
-    width: 500px;
-    margin: 200px auto;
-    /* background-color: #f1fcfc; */
-}
-#search{
-    background-color: #beebe9;
-    display: flex;
-    padding: 10px;
-    border-radius: 10px 10px 0 0;
-    /* border-bottom: 2px solid #79bac1; */
-    position: relative;
-}
-.currentpage{
-    display: block;
-}
-#pages{
-    background-color: #beebe9;
-    border-radius: 0 0 10px 10px;
-}
-#links{
-    background-color: #beebe9;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 0 0 10px 10px;
-}
-/*******************加载条开始**************************/
+/*******************条纹加载条开始**************************/
 .stripe{
     flex: 1;
     height: 80px;
@@ -80,28 +52,111 @@
         opacity: 1;
     }
 }
-/* @keyframes fade{
-    0%{
+/*******************条纹加载条结束**************************/
 
+#rotateloding{
+    width: 100px;
+    height: 100px;
+    /* background-color: #3f72af; */
+    margin: auto;
+    border-top: 10px solid #f6416c;
+    box-sizing: border-box;
+    border-radius: 50%;
+    position: relative;
+    animation: rotateloding1 2s linear infinite;
+    transform: rotate3d(0,0,1,180deg);
+}
+@keyframes rotateloding1{
+    from{
+        transform: rotate(0deg);
     }
-} */
+    to{
+        transform: rotate(360deg);
+    }
+}
+/*******************旋转加载条开始**************************/
+#rotateloding::before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    /* background-color: #3f72af; */
+    border-top: 10px solid #ffde7d;
+    top: -10px;
+    /* left: 10px; */
+    box-sizing: border-box;
+    border-radius: 50%;
+    transform: rotate(120deg);
+}
+#rotateloding::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    /* background-color: #3f72af; */
+    border-top: 10px solid #00b8a9;
+    top: -10px;
+    /* left: -10px; */
+    box-sizing: border-box;
+    border-radius: 50%;
+    transform: rotate(-120deg);
+}
+#rotateloding > span{
+    display: block;
+    line-height: 100px;
+    width: 100px;
+    height: 100px;
+    font-size: 12px;
+    text-align: center;
+    color: #ededed;
+    position: absolute;
+    z-index: 10;
+    animation: rotateloding2 2s linear infinite;
+}
+@keyframes rotateloding2{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(-360deg);
+    }
+}
+/*******************旋转加载条开始**************************/
 
-/* .stripe:nth-of-type(5n+1){
-    background-color: #ff2e63;
+
+#mainbox{
+    display: none;
+    /* opacity: 0; */
+    /* display: block; */
 }
-.stripe:nth-of-type(5n+2){
-    background-color: #f08a5d;
+#searchbox{
+    width: 500px;
+    margin: 200px auto;
+    /* background-color: #f1fcfc; */
 }
-.stripe:nth-of-type(5n+3){
-    background-color: #f9ed69;
+#search{
+    background-color: #beebe9;
+    display: flex;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    /* border-bottom: 2px solid #79bac1; */
+    position: relative;
 }
-.stripe:nth-of-type(5n+4){
-    background-color: #30e3ca;
+.currentpage{
+    display: block;
 }
-.stripe:nth-of-type(5n+5){
-    background-color: #112d4e;
-} */
-/*******************加载条结束**************************/
+#pages{
+    background-color: #beebe9;
+    border-radius: 0 0 10px 10px;
+}
+#links{
+    background-color: #beebe9;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0 0 10px 10px;
+}
 /*******************搜索开始**************************/
 .search-input{
     min-width: 0;
