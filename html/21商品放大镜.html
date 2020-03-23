@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="ohaaaa" />
+    <meta name="time" content="2020-03-23" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" type=" " href=" " />
+    <link rel="shortcut icon" type="image/x-icon" href=" " />
+    <link rel="stylesheet" type="text/css" href=" " />
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: #eee;
+        }
+        #magnifierbox{
+            margin: 100px auto;
+            width: 400px;
+            height: 300px;
+            background-color: #ccc;
+        }
+        #preview{
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            position: relative;
+        }
+        .smallpic{
+            cursor: move;
+        }
+        .smallpic > img{
+            width: 100px;
+        }
+        .bigpic{
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: #ccc;
+            top: 0;
+            left: 110px;
+            overflow: hidden;
+            display: none;
+        }
+        .bigpic > img{
+            width: 600px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .bg{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+            opacity: 0.5;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="magnifierbox">
+        <div id="preview">
+            <div class="smallpic">
+                <img src="../images/iphonesmall.png" alt="">
+                <div class="bg"></div>
+            </div>
+            
+            <div class="bigpic">
+                <img src="../images/iphonebig.jpg" alt="">
+            </div>
+        </div>
+    </div>
+<script src=" "></script>
+<script>
+    let preview = document.querySelector('#preview');
+    let smallpic = document.querySelector('.smallpic');
+    let mask = document.querySelector('.bg');
+    let bigpic = document.querySelector('.bigpic');
+
+    smallpic.addEventListener('mouseover',function () {
+        mask.style.display = 'block';
+        bigpic.style.display = 'block';
+    })
+
+    smallpic.addEventListener('mouseout',function(){
+        mask.style.display = 'none';
+        bigpic.style.display = 'none';
+    })
+
+    smallpic.addEventListener('mousemove',move);
+
+    function move(e) {
+        //求出鼠标再小图内的坐标
+        let x = e.pageX - preview.offsetLeft;
+        let y = e.pageY - preview.offsetTop;
+
+        //推算mask该偏移的距离
+        let maskx = 0;
+        // if(x<25){
+        //     maskx=0;
+        // }else if(x>75){
+        //     maskx=50;
+        // }else{
+        //     maskx=x-25;
+        // }
+        maskx = (x<25)?0:((x>75)?50:(x-25));
+        let masky = (y<25)?0:((y>75)?50:(y-25));
+        mask.style.left = maskx + 'px';
+        mask.style.top = masky + 'px';
+
+        //推算bigpic中的图片偏移的距离
+        let magnifierpic = bigpic.children[0];
+        magnifierpic.style.left = - maskx*6 + 'px';
+        magnifierpic.style.top = - masky*6 + 'px';
+    }
+
+
+
+</script>
+</body>
+</html>
