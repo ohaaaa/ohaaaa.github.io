@@ -224,8 +224,8 @@
     setInterval(countDown, 1000);
     function countDown() {
         if(futuredate.value!==''){
-            var inputTime = +new Date(futuredate.value+' 00:00:00'); // 返回的是用户输入时间总的毫秒数
-            var nowTime = +new Date(); // 返回的是当前时间总的毫秒数
+            var inputTime = new Date(futuredate.value +' 00:00:00').getTime(); // 返回的是用户输入时间总的毫秒数
+            var nowTime = new Date().getTime(); // 返回的是当前时间总的毫秒数
             // times是剩余时间总的秒数
             var times = Math.abs((inputTime - nowTime)) / 1000;
             if((inputTime - nowTime)<0){
