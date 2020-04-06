@@ -17,6 +17,14 @@
         body{
             background-color: #eee;
         }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        input{
+            border-style: none;
+            outline-style: none;
+        }
         #countdown{
             width: 540px;
             /* height: 600px; */
@@ -113,6 +121,46 @@
             min-height: 200px;
             /* text-align: center; */
             /* list-style: none; */
+            position: relative;
+        }
+        .input-content{
+            position: absolute;
+            width: 300px;
+            /* height: 200px; */
+            background-color: #aaa;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 20px 20px 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+        .input-content>div{
+            display: flex;
+        }
+        .input-content label{
+            display: block;
+            flex: 2;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .input-content input{
+            flex: 8;
+            height: 30px;
+            line-height: 30px;
+            font-size: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            text-indent: 10px;
+        }
+        .input-content a{
+            flex: 1;
+            display: block;
+            text-align: center;
+        }
+        .input-content a>img{
+            width: 25px;
         }
         #countdown ul>li{
             margin: 0 0 10px 10px;
@@ -123,7 +171,10 @@
             vertical-align: middle;
             background-color: #ccc;
         }
-        #countdown ul>li>span{
+        #countdown ul>li>.content-left{
+            float: left;
+        }
+        #countdown ul>li>.content-right{
             float: right;
         }
         .countdown-footer{
@@ -174,11 +225,27 @@
         </div>
         <div class="countdown-content-area">
             <ul class="countdown-contents">
+                <div class="input-content">
+                    <div>
+                        <label for="sentence">短句</label>
+                        <input type="text" name="sentence" id="sentence">
+                    </div>
+                    <div>
+                        <label for="sign">署名</label>
+                        <input type="text" name="sign" id="sign">
+                    </div>
+                    <div>
+                        <a href="javascript:;"><img src="../images/close2.png" alt=""></a>
+                        <a href="javascript:;"><img src="../images/go2.png" alt=""></a>
+                    </div>
+                </div>
                 <li class="countdown-content">
-                    能请你跳支舞吗？
+                    <span class="content-left">能请你跳支舞吗？</span>
+                    <span class="content-right"></span>
                 </li>
                 <li class="countdown-content">
-                    峰不二子不是好女人，是绝世好女人呀。<span >--鲁邦三世</span>
+                    <span class="content-left">峰不二子不是好女人，是绝世好女人呀。</span>
+                    <span class="content-right">--鲁邦三世</span>
                 </li>
             </ul>
         </div>
@@ -187,6 +254,7 @@
         </div>
     </div>
 <script src=" "></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 <script>
     let label = document.querySelector('label');
     let futuredate = document.querySelector('#futuredate');
@@ -254,6 +322,24 @@
                 seconds[i].innerHTML = s;
             }
         }
+    }
+
+    // 3. ajax获取数据
+    function getData() {
+        //设置一个变量用于接收ajax返回的值
+
+    $.ajax({
+        url : "http://localhost:8080/ajaxservlet",
+        type : "get",
+        async : false,//此处需要注意的是要想获取ajax返回的值这个async属性必须设置成同步的，否则获取不到返回值
+        data : {"name":"xiaoli"},
+        dataType : "json",
+        success : function(data) {
+            consloe.log(data);
+        }
+         
+    });
+    return pageTotal;
     }
 </script>
 </body>
