@@ -86,6 +86,7 @@ header {
   margin-bottom: 2rem;
 }
 .plate-bottom .plate-content {
+  padding-right: 1rem;
   margin: 0 0 1rem;
 }
 .plate-bottom .plate-content a {
