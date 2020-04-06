@@ -18,6 +18,9 @@
     font-size: 7px!important;
   }
 }
+.row {
+  margin: 0;
+}
 body {
   background-image: url('../images/background.png');
 }
